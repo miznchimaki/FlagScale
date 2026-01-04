@@ -5,7 +5,7 @@ import torch
 
 from torch import Tensor, nn
 
-from flagscale.models.pi0.types import FeatureType, NormalizationMode, PolicyFeature
+from flagscale.models.pi0_old.types import FeatureType, NormalizationMode, PolicyFeature
 
 
 def create_stats_buffers(
