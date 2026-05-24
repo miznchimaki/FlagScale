@@ -2220,6 +2220,9 @@ def training_log(
             if wandb_writer:
                 wandb_writer.log({'learning-rate': learning_rate}, iteration)
                 wandb_writer.log({'consumed-tokens': args.consumed_train_samples * args.seq_length / 1000. / 1000 / 1000}, iteration)
+        if args.decoupled_lr is not None:
+            if writer:
+                writer.add_scalar('decoupled-learning-rate', args.decoupled_learning_rate, iteration)
         if args.skipped_train_samples > 0:
             if writer:
                 writer.add_scalar('skipped-train-samples', args.skipped_train_samples, iteration)
