@@ -1,0 +1,33 @@
+experiment:
+  exp_name: qwen3_14b
+  exp_dir: ./outputs/${experiment.exp_name}
+  task:
+    type: inference
+    backend: vllm
+    entrypoint: flagscale/inference/inference_llm.py
+  runner:
+    hostfile: null
+  cmds:
+    before_start: source /root/miniconda3/bin/activate flagscale-inference
+  envs:
+    VLLM_PLUGINS: fl
+    VLLM_USE_FLASHINFER_SAMPLER: 0
+    VLLM_LOGGING_LEVEL: INFO
+    CUDA_VISIBLE_DEVICES: 0
+    CUDA_DEVICE_MAX_CONNECTIONS: 1
+action: run
+inference:
+  llm:
+    model: /workspace/ckpts/Qwen3-14B
+    trust_remote_code: true
+    tensor_parallel_size: 1
+    pipeline_parallel_size: 1
+    gpu_memory_utilization: 0.9
+    seed: 2333
+  generate:
+    prompts:
+    - Hello, my name is Jensen Jen-hsun Huang, the CEO of NVIDIA. Could you tell me
+      the futuer of generative AI?
+    sampling:
+      max_tokens: 200
+      temperature: 0.0

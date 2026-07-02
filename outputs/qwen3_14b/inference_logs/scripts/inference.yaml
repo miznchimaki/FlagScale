@@ -1,0 +1,14 @@
+llm:
+  model: /workspace/ckpts/Qwen3-14B
+  trust_remote_code: true
+  tensor_parallel_size: 1
+  pipeline_parallel_size: 1
+  gpu_memory_utilization: 0.9
+  seed: 2333
+generate:
+  prompts:
+  - Hello, my name is Jensen Jen-hsun Huang, the CEO of NVIDIA. Could you tell me
+    the futuer of generative AI?
+  sampling:
+    max_tokens: 200
+    temperature: 0.0

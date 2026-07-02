@@ -8,7 +8,7 @@ slurm*
 logs
 .vscode
 log_file/*
-outputs
+# *triton_cache*/**
 *.log
 *.out
 .idea/
